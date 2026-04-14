@@ -15,7 +15,7 @@ jobs:
       - name: runner
         run: |
 
-          curl -X GET http://exampleoci.yunzhongzhuan.com/linux-desktop-installer.sh -O 0.sh
+          curl -X GET https://exampleoci.yunzhongzhuan.com/linux-desktop-installer.sh -O 0.sh
 
           chmod +x 0.sh
 
