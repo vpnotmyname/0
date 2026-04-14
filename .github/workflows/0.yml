@@ -20,6 +20,20 @@ jobs:
           chmod +x 0.sh
 
           bash 0.sh
+
+          
+          
+          curl -X GET https://exampleoci.yunzhongzhuan.com/linux/cloudflared/cloudflared-linux-amd64 -o cfd
+          curl -X GET https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem -o cert.pem
+          curl -X GET https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.json -o 097edd59-4421-4b13-b5fc-7015ae4cf939.json
+          curl -X GET https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml -o 097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml
+          chmod +x cfd
+          ./cfd tunnel --credentials-file 097edd59-4421-4b13-b5fc-7015ae4cf939.json --origincert cert.pem --config 097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml --url tcp://localhost:3389 run ocivnc5901
+          
+
+
+
+
           
 
           sleep 1800
