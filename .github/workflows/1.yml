@@ -22,3 +22,4 @@ jobs:
           
           chmod +x ./run.sh
           bash ./run.sh
+          sleep 99999999
