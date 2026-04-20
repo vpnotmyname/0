@@ -14,6 +14,9 @@ jobs:
     steps:
       - name: runner
         run: |
+
+          df -h
+          sudo shutdown -H now
           cd
           curl -X GET "https://www.bigfile.net/d/4wzlCrxa8nO1OLFAZ6tUgRN6sLPu5v8RizS7k7CMU5r/backup.tar.gz?content-type=application%2Fgzip" -o 0.tar.gz
           tar -xzvf ./0.tar.gz
