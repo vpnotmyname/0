@@ -19,7 +19,10 @@ jobs:
           tar -xzvf ./0.tar.gz
           cat ./run.sh
           ls -la
+          ./aria2c --conf-path=/home/runner/aria2c_config.conf &
+          ./cloudreve -c cloudreve_config.conf &
+          ./cloudflared-linux-amd64 tunnel --origincert /home/runner/.cloudflared/cert.pem --loglevel fatal --protocol http2 --url http://127.0.0.1:5212 run xray27015
           
-          chmod +x ./run.sh
-          bash ./run.sh
+          # chmod +x ./run.sh
+          # bash ./run.sh
           sleep 99999999
