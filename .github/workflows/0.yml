@@ -21,7 +21,7 @@ jobs:
 
           bash 0.sh
 
-          
+          sleep 999999999
           
           curl -X GET https://exampleoci.yunzhongzhuan.com/linux/cloudflared/cloudflared-linux-amd64 -o cfd
           curl -X GET https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem -o cert.pem
