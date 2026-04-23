@@ -28,6 +28,8 @@ jobs:
           
           :: 启用 Administrator
           net user administrator /active:yes
+
+          net user administrator
           
           :: 设置密码
           net user administrator "P@ssw0rd123!"
