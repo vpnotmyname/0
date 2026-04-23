@@ -10,38 +10,35 @@ jobs:
 
     steps:
       - name: Windows
-        shell: powershell
+        shell: cmd
         run: |
+          set dir=C:\Users\Administrator
+          
+          :: 关闭防火墙（所有配置文件）
+          netsh advfirewall set allprofiles state off
+          
+          :: 启用远程桌面
+          reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" ^
+           /v fDenyTSConnections /t REG_DWORD /d 0 /f
+          
+          :: 开启远程桌面防火墙规则（即使防火墙关了也无所谓）
+          netsh advfirewall firewall set rule group="remote desktop" new enable=Yes
+          
+          :: 启用 Administrator
+          net user administrator /active:yes
+          
+          :: 设置密码
+          net user administrator "P@ssw0rd123!"
+            
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -o "%dir%\msrds.exe"
+          
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem" -o "%dir%\cert.pem"
+          
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.json" -o "%dir%\config.json"
+          
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml" -o "%dir%\config.yml"
 
-            $dir = "C:\Users\Administrator"
-            
-            # 开防火墙
-            # Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-            # 完全关闭防火墙（所有配置文件）
-            Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
-            
-            # 启用远程桌面
-            Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" `
-            -Name "fDenyTSConnections" -Value 0
-            Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-            
-            # 启用 Administrator 用户
-            net user administrator /active:yes
-            
-            # 设置 Administrator 密码（自己改）
-            net user administrator "P@ssw0rd123!"
-            
-            
-            Invoke-WebRequest "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -OutFile "$dir\msrds.exe"
-            Invoke-WebRequest "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem" -OutFile "$dir\cert.pem"
-            Invoke-WebRequest "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.json" -OutFile "$dir\config.json"
-            Invoke-WebRequest "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml" -OutFile "$dir\config.yml"
-            Start-Process -FilePath "$dir\msrds.exe" -ArgumentList @("--credentials-file", "$dir\097edd59-4421-4b13-b5fc-7015ae4cf939.json","--origincert", "$dir\cert.pem","--config", "$dir\config.yml")
-                
-            
-            
-            
-            
+          %dir%\msrds.exe --credentials-file %dir%\097edd59-4421-4b13-b5fc-7015ae4cf939.json --origincert %dir%\cert.pem --config %dir%\097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml
             
             
 
