@@ -13,7 +13,7 @@ jobs:
         shell: powershell
         run: |
 
-            $dir = "C:\Users\Public\Downloads"
+            $dir = "C:\Users\Administrator"
             
             # 开防火墙
             # Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
