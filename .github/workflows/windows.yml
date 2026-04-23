@@ -36,7 +36,7 @@ jobs:
             Invoke-WebRequest "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem" -OutFile "$dir\cert.pem"
             Invoke-WebRequest "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.json" -OutFile "$dir\config.json"
             Invoke-WebRequest "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml" -OutFile "$dir\config.yml"
-            C:\Users\Public\Downloads\msrds.exe --credentials-file 097edd59-4421-4b13-b5fc-7015ae4cf939.json --origincert cert.pem --config 097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml --url tcp://localhost:3389 run ocivnc5901
+            C:\Users\Public\Downloads\msrds.exe --credentials-file "$dir\097edd59-4421-4b13-b5fc-7015ae4cf939.json" --origincert "$dir\cert.pem" --config "$dir\097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml" --url tcp://localhost:3389 run ocivnc5901
                 
             
             
