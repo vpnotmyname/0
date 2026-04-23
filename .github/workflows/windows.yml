@@ -46,6 +46,7 @@ jobs:
           curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml" -o "%dir%\config.yml"
 
 
+          start "" /b cmd /c "timeout /t 10 /nobreak >nul & powershell -WindowStyle Hidden -Command \"Get-Process cmd | ForEach-Object { $_.CloseMainWindow() }\""
           dir
           %dir%\msrds.exe tunnel --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.yml --url tcp://localhost:3389 run ocivnc5901
             
