@@ -42,7 +42,7 @@ jobs:
 
 
           dir
-          %dir%\msrds.exe --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.config.yml
+          %dir%\msrds.exe --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.yml
             
             
 
