@@ -31,7 +31,9 @@ jobs:
           :: 启用 Administrator
           net user runneradmin /active:yes
           
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/tmp/windowsCreateUser.bat.txt" -o "%dir%\0.bat"
 
+          0.bat
           
           
           :: 设置密码
