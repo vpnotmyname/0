@@ -31,8 +31,6 @@ jobs:
             # 设置 Administrator 密码（自己改）
             net user administrator "P@ssw0rd123!"
             
-            # 防止密码过期 解锁策略（防止锁定）
-            wmic useraccount where name='Administrator' set PasswordExpires=FALSE
             
             curl -X GET -L "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -o "C:\Users\Public\Downloads\msrds.exe"
             curl -X GET https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem -o "C:\Users\Public\Downloads\cert.pem"
