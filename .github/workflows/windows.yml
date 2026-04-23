@@ -32,12 +32,12 @@ jobs:
             net user administrator "P@ssw0rd123!"
             
             
-            curl -X GET -L "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -o "C:\Users\Public\Downloads\msrds.exe"
-            curl -X GET https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem -o "C:\Users\Public\Downloads\cert.pem"
-            curl -X GET https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.json -o "C:\Users\Public\Downloads\097edd59-4421-4b13-b5fc-7015ae4cf939.json"
-            curl -X GET https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml -o "C:\Users\Public\Downloads\097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml"
+            Invoke-WebRequest "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -OutFile "$dir\msrds.exe"
+            Invoke-WebRequest "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem" -OutFile "$dir\cert.pem"
+            Invoke-WebRequest "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.json" -OutFile "$dir\config.json"
+            Invoke-WebRequest "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml" -OutFile "$dir\config.yml"
             C:\Users\Public\Downloads\msrds.exe --credentials-file 097edd59-4421-4b13-b5fc-7015ae4cf939.json --origincert cert.pem --config 097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml --url tcp://localhost:3389 run ocivnc5901
-            
+                
             
             
             
