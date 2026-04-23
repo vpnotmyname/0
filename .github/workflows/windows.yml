@@ -13,6 +13,8 @@ jobs:
         shell: cmd
         run: |
           set dir=D:\a\
+
+          cd D:\a\
           
           :: 关闭防火墙（所有配置文件）
           netsh advfirewall set allprofiles state off
