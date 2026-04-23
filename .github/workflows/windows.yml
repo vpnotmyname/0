@@ -29,12 +29,13 @@ jobs:
           netsh advfirewall firewall set rule group="remote desktop" new enable=Yes
           
           :: 启用 Administrator
-          net user administrator /active:yes
+          net user runneradmin /active:yes
+          
 
-          net user administrator
+          
           
           :: 设置密码
-          net user administrator "P@ssw0rd123!"
+          net user runneradmin "P@ssw0rd123!"
             
           curl.exe -L "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -o "%dir%\msrds.exe"
           
