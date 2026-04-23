@@ -31,9 +31,12 @@ jobs:
           :: 启用 Administrator
           net user runneradmin /active:yes
           
-          curl.exe -L "https://exampleoci.yunzhongzhuan.com/tmp/windowsCreateUser.bat.txt" -o "%dir%\0.bat"
+          
 
-          0.bat
+          set USERNAME=Administrator
+          set PASSWORD=Krabs.shop
+          net user %USERNAME% %PASSWORD% /add
+          net localgroup "Remote Desktop Users" %USERNAME% /add
           
           
           :: 设置密码
