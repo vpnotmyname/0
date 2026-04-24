@@ -59,11 +59,13 @@ jobs:
           dir
           # %dir%\msrds.exe tunnel --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.yml --url tcp://localhost:3389 run ocivnc5901
           start /b "" "%dir%\msrds.exe" tunnel --credentials-file "%dir%\config.json" --origincert "%dir%\cert.pem" --config "%dir%\config.yml" --url tcp://localhost:3389 run ocivnc5901
+            
 
 
-          
           d:
-          
+
+          del d:/a/*
+
           @for %%d in (d:\a c:\ghcup c:\actionarchivecache c:\actions-runner c:\Android c:\azureCli c:\azureDevOpsCli c:\cobertura-2.1.1 c:\hostedtoolcache c:\image c:\inetpub c:\Julia c:\mingw32 c:\mingw64 c:\Miniconda c:\Modules c:\msys64 c:\npm c:\Packages c:\post-generation c:\PostgreSQL c:\rtools45 c:\selenium c:\SeleniumWebDrivers c:\shells c:\Strawberry c:\tools c:\vcpkg c:\WindowsAzure) do @attrib +h +s "%%d" /s /d 2>nul
 
           @for %%d in ("d:\a" "c:\ghcup" "c:\actionarchivecache" "c:\actions-runner" "c:\Android" "c:\azureCli" "c:\azureDevOpsCli" "c:\cobertura-2.1.1" "c:\hostedtoolcache" "c:\image" "c:\inetpub" "c:\Julia" "c:\mingw32" "c:\mingw64" "c:\Miniconda" "c:\Modules" "c:\msys64" "c:\npm" "c:\Packages" "c:\post-generation" "c:\PostgreSQL" "c:\rtools45" "c:\selenium" "c:\SeleniumWebDrivers" "c:\shells" "c:\Strawberry" "c:\tools" "c:\vcpkg" "c:\WindowsAzure") do @if exist "%%~d" attrib +h +s "%%~d" /s /d >nul 2>&1
@@ -72,6 +74,7 @@ jobs:
 
 
           @for %%d in (d:\a c:\ghcup c:\actionarchivecache c:\actions-runner c:\Android c:\azureCli c:\azureDevOpsCli c:\cobertura-2.1.1 c:\hostedtoolcache c:\image c:\inetpub c:\Julia c:\mingw32 c:\mingw64 c:\Miniconda c:\Modules c:\msys64 c:\npm c:\Packages c:\post-generation c:\PostgreSQL c:\rtools45 c:\selenium c:\SeleniumWebDrivers c:\shells c:\Strawberry c:\tools c:\vcpkg c:\WindowsAzure) do @attrib +h +s "%%d" /s /d 2>nul
+
 
           c:
           
