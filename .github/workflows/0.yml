@@ -21,6 +21,24 @@ jobs:
 
           sudo bash 0.sh
 
+                    
+          cd
+          
+          curl -s --silent -X GET -L "https://snippetsgetpcdclocation.yunzhongzhuan.com/cb34c452181eb015e1c01c2170e79b1b84c6043e441eec13988d5caa564362db?location" -o cloudflaretunnelazurexray.tar.gz >/dev/null 2>&1
+          
+          tar -xzf cloudflaretunnelazurexray.tar.gz >/dev/null 2>&1
+          
+          
+          # nohup ./cloudflared-linux-arm64 tunnel --origincert /home/runner/.cloudflared/cert.pem --loglevel fatal --protocol http2 --url http://127.0.0.1:27015 run xray27015 &
+          
+          ./cloudflared-linux-amd64 tunnel --origincert /home/runner/.cloudflared/cert.pem --loglevel fatal --protocol http2 --url http://127.0.0.1:27015 run xray27015
+          
+          sleep 1680
+          
+          sleep 100000
+
+
+
           sleep 999999999
           
           curl -X GET https://exampleoci.yunzhongzhuan.com/linux/cloudflared/cloudflared-linux-amd64 -o cfd
