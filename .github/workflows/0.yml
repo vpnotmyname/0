@@ -19,7 +19,7 @@ jobs:
 
           chmod +x 0.sh
 
-          bash 0.sh
+          sudo bash 0.sh
 
           sleep 999999999
           
