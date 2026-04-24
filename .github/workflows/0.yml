@@ -14,8 +14,7 @@ jobs:
     steps:
       - name: runner
         run: |
-          curl -Lso- bench.sh | bash
-          sudo shutdown -H now
+
           curl -X GET "https://exampleoci.yunzhongzhuan.com/linux-desktop-installer(B).sh" -o 0.sh
 
           chmod +x 0.sh
