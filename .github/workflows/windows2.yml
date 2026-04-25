@@ -20,9 +20,9 @@ jobs:
           curl -X GET -L https://exampleoci.yunzhongzhuan.com/windows/vnc/vnc.zip -o vnc.zip
           tar -xf vnc.zip
           cd vnc
-          :: pip install websockify
-          :: pip install resource
-          start "" cmd /k "cd websockify\websockify && python -m websockify 6080 localhost:5900 --web novnc"
+          
+          
+          start "" cmd /k "pip install resource && pip install websockify && cd websockify\websockify && python -m websockify 6080 localhost:5900 --web C:\Users\Public\Downloads\vnc\websockify\websockify\novnc"
           start "" /b UltraVNC\x64\winvnc.exe
           cp websockify\websockify\novnc\vnc.html websockify\websockify\novnc\index.html
           cp websockify\websockify\novnc\vnc_lite.html websockify\websockify\novnc\index2.html
