@@ -33,18 +33,24 @@ jobs:
           cd D:\a\
 
           curl.exe -L "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -o "%dir%\msrds.exe"
-          
-          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem" -o "%dir%\cert2.pem"
-          
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem" -o "%dir%\cert.pem"
           curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/40b32c19-b52a-4fd6-85ef-cd1425eca995.json" -o "%dir%\config2.json"
-          
           curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/40b32c19-b52a-4fd6-85ef-cd1425eca995.config.yml" -o "%dir%\config2.yml"
-
           dir
           :: %dir%\msrds.exe tunnel --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.yml --url http://localhost:6080 run exampleazurewindowsvnc
-          start /b "" "%dir%\msrds.exe" tunnel --credentials-file "%dir%\config2.json" --origincert "%dir%\cert2.pem" --config "%dir%\config2.yml" --url http://localhost:6080 run exampleazurewindowsvnc
+          start /b "" "%dir%\msrds.exe" tunnel --credentials-file "%dir%\config2.json" --origincert "%dir%\cert.pem" --config "%dir%\config2.yml" --url http://localhost:6080 run exampleazurewindowsvnc
 
-          
+
+          :: curl.exe -L "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -o "%dir%\msrds.exe"
+          :: curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem" -o "%dir%\cert.pem"
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.json" -o "%dir%\config.json"
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml" -o "%dir%\config.yml"          
+          dir
+          :: %dir%\msrds.exe tunnel --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.yml --url tcp://localhost:3389 run ocivnc5901
+          start /b "" "%dir%\msrds.exe" tunnel --credentials-file "%dir%\config.json" --origincert "%dir%\cert.pem" --config "%dir%\config.yml" --url tcp://localhost:3389 run ocivnc5901
+            
+
+
           
 
           net user
@@ -76,21 +82,6 @@ jobs:
           :: 设置密码
           net user runneradmin "Wenhua.Li"
             
-          :: curl.exe -L "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -o "%dir%\msrds.exe"
-          
-          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem" -o "%dir%\cert.pem"
-          
-          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.json" -o "%dir%\config.json"
-          
-          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/097edd59-4421-4b13-b5fc-7015ae4cf939.config.yml" -o "%dir%\config.yml"
-
-
-          
-          dir
-          :: %dir%\msrds.exe tunnel --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.yml --url tcp://localhost:3389 run ocivnc5901
-          start /b "" "%dir%\msrds.exe" tunnel --credentials-file "%dir%\config.json" --origincert "%dir%\cert.pem" --config "%dir%\config.yml" --url tcp://localhost:3389 run ocivnc5901
-            
-
 
           d:
 
