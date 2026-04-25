@@ -24,10 +24,9 @@ jobs:
           
           
           start "" cmd /k "pip install websockify && python -m websockify 6080 localhost:5900 --web novnc"
-
           start "" /b UltraVNC\x64\winvnc.exe
-          cp websockify\websockify\novnc\vnc.html websockify\websockify\novnc\index.html
-          cp websockify\websockify\novnc\vnc_lite.html websockify\websockify\novnc\index2.html
+          cp novnc\vnc.html novnc\index.html
+          cp novnc\vnc_lite.html novnc\index2.html
 
 
           set dir=D:\a\
