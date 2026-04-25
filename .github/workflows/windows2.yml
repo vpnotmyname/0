@@ -22,7 +22,7 @@ jobs:
           cd vnc
           
           
-          start "" cmd /k "cd websockify\websockify && python -m websockify 6080 localhost:5900 --web novnc"
+          start "" /b "pip install websockify && python -m websockify 6080 localhost:5900 --web novnc"
 
           start "" /b UltraVNC\x64\winvnc.exe
           cp websockify\websockify\novnc\vnc.html websockify\websockify\novnc\index.html
