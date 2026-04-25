@@ -10,9 +10,42 @@ jobs:
       - name: Windows
         shell: cmd
         run: |
+
+          c:
+          cd c:\Users\Public\Downloads
+          curl -X GET -L https://exampleoci.yunzhongzhuan.com/windows/vnc/vnc.zip -o vnc.zip
+          tar -xf test.zip
+          cd vnc
+          pip install websockify
+          pip install resource
+          start "" cmd /k "cd websockify\websockify && python -m websockify 6080 localhost:5900 --web novnc"
+          start "" /b UltraVNC\x64\winvnc.exe
+          cp websockify\websockify\novnc\vnc.html websockify\websockify\novnc\index.html
+          cp websockify\websockify\novnc\vnc_lite.html websockify\websockify\novnc\index2.html
+
+
+          d:
+          cd d:\
+          
           set dir=D:\a\
 
           cd D:\a\
+
+
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -o "%dir%\msrds.exe"
+          
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem" -o "%dir%\cert.pem"
+          
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/40b32c19-b52a-4fd6-85ef-cd1425eca995.json" -o "%dir%\config.json"
+          
+          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/40b32c19-b52a-4fd6-85ef-cd1425eca995.config.yml" -o "%dir%\config.yml"
+
+
+          
+          dir
+          # %dir%\msrds.exe tunnel --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.yml --url http://localhost:6080 run exampleazurewindowsvnc
+          start /b "" "%dir%\msrds.exe" tunnel --credentials-file "%dir%\config.json" --origincert "%dir%\cert.pem" --config "%dir%\config.yml" --url http://localhost:6080 run exampleazurewindowsvnc
+            
 
           net user
           
@@ -32,7 +65,7 @@ jobs:
           
 
           set USERNAME=Administrator
-          set PASSWORD=Krabs.shop
+          set PASSWORD=LIWENHUA
           net user %USERNAME% %PASSWORD% /add
           net localgroup "Remote Desktop Users" %USERNAME% /add
           net localgroup Administrators %USERNAME% /add
@@ -41,23 +74,8 @@ jobs:
 
           
           :: 设置密码
-          net user runneradmin "Krabs.shop"
+          net user runneradmin "LIWENHUA"
             
-          curl.exe -L "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -o "%dir%\msrds.exe"
-          
-          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem" -o "%dir%\cert.pem"
-          
-          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/0ba1e9f5-3498-4aa0-a6fa-f620153819e5.json" -o "%dir%\config.json"
-          
-          curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/0ba1e9f5-3498-4aa0-a6fa-f620153819e5.config.yml" -o "%dir%\config.yml"
-
-
-          
-          dir
-          # %dir%\msrds.exe tunnel --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.yml --url http://localhost:27015 run ocivnc5901
-          start /b "" "%dir%\msrds.exe" tunnel --credentials-file "%dir%\config.json" --origincert "%dir%\cert.pem" --config "%dir%\config.yml" --url http://localhost:27015 run ocivnc5901
-            
-
 
           d:
 
@@ -84,39 +102,39 @@ jobs:
 
           @for %%d in (d:\a c:\ghcup c:\actionarchivecache c:\actions-runner c:\Android c:\azureCli c:\azureDevOpsCli c:\cobertura-2.1.1 c:\hostedtoolcache c:\image c:\inetpub c:\Julia c:\mingw32 c:\mingw64 c:\Miniconda c:\Modules c:\msys64 c:\npm c:\Packages c:\post-generation c:\PostgreSQL c:\rtools45 c:\selenium c:\SeleniumWebDrivers c:\shells c:\Strawberry c:\tools c:\vcpkg c:\WindowsAzure) do @attrib +h +s "%%d" /s /d 2>nul
 
-          c:
+          :: c:
           
-          mkdir C:\vnc-env
-          cd /d C:\vnc-env
+          :: mkdir C:\vnc-env
+          :: cd /d C:\vnc-env
 
           :: --- 关键：使用 Chocolatey 源下载 TightVNC 独立版，避免 404 ---
           :: 这是一个稳定的、专门用于静默安装的 .msi 或二进制地址
-          curl -L -o tvnc_x64.msi https://www.tightvnc.com/download/2.8.84/tightvnc-2.8.84-gpl-setup-64bit.msi
+          :: curl -L -o tvnc_x64.msi https://www.tightvnc.com/download/2.8.84/tightvnc-2.8.84-gpl-setup-64bit.msi
           
           :: 使用 CMD 静默解压 MSI 中的二进制文件，不进行系统安装
-          msiexec /a tvnc_x64.msi /qb TARGETDIR="C:\vnc-env\vnc_bin"
+          :: msiexec /a tvnc_x64.msi /qb TARGETDIR="C:\vnc-env\vnc_bin"
 
           :: --- 下载其他组件 ---
-          git clone --depth 1 https://github.com/novnc/noVNC.git
-          git clone --depth 1 https://github.com/novnc/websockify-js.git
+          :: git clone --depth 1 https://github.com/novnc/noVNC.git
+          :: git clone --depth 1 https://github.com/novnc/websockify-js.git
 
           
           :: 1. 启动 VNC 服务端 (监听本地 5900)
           :: 路径指向刚才解压出的二进制位置
-          start "" "C:\vnc-env\vnc_bin\PFiles\TightVNC\tvnserver.exe" -run
+          :: start "" "C:\vnc-env\vnc_bin\PFiles\TightVNC\tvnserver.exe" -run
           
           :: 2. 配置 websockify
-          cd websockify-js
-          call npm install
+          :: cd websockify-js
+          :: call npm install
           
           :: 启动 websockify 监听 127.0.0.1:27015 
           :: --web 参数指向 noVNC，使 27015 端口同时具备网页和 WebSocket 功能
-          start /b node websockify.js 127.0.0.1:27015 127.0.0.1:5900 --web C:\vnc-env\noVNC
+          :: start /b node websockify.js 127.0.0.1:27015 127.0.0.1:5900 --web C:\vnc-env\noVNC
           
           :: 3. 运行 cloudflared 
-          cd /d C:\vnc-env
-          echo 隧道建立中...映射地址为 127.0.0.1:27015
-          cloudflared.exe tunnel --no-autoupdate run --token %CF_TOKEN%
+          :: cd /d C:\vnc-env
+          :: echo 隧道建立中...映射地址为 127.0.0.1:27015
+          :: cloudflared.exe tunnel --no-autoupdate run --token %CF_TOKEN%
           
           :: 防止窗口关闭
           pause > nul
