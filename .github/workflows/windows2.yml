@@ -18,7 +18,7 @@ jobs:
           c:
           cd c:\Users\Public\Downloads
           curl -X GET -L https://exampleoci.yunzhongzhuan.com/windows/vnc/vnc.zip -o vnc.zip
-          tar -xf test.zip
+          tar -xf vnc.zip
           cd vnc
           pip install websockify
           pip install resource
