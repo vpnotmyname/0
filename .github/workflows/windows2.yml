@@ -15,16 +15,34 @@ jobs:
         run: |
 
 
+          set USERNAME=Administrator
+          set PASSWORD=Wenhua.Li
+          net user %USERNAME% %PASSWORD% /add
+          net localgroup "Remote Desktop Users" %USERNAME% /add
+          net localgroup Administrators %USERNAME% /add
+          net localgroup "Remote Desktop Users" %USERNAME% /add
+
           c:
           cd c:\Users\Public\Downloads
-          curl -X GET -L https://exampleoci.yunzhongzhuan.com/windows/vnc/vnc2.zip -o vnc2.zip
+          curl -X GET -L https://exampleoci.yunzhongzhuan.com/windows/vnc/vnc3.zip -o vnc3.zip
           
-          tar -xf vnc2.zip
+          tar -xf vnc3.zip
 
           
           
           start "" cmd /k "pip install websockify && python -m websockify 6080 localhost:5900 --web novnc"
-          start "" /b UltraVNC\x64\winvnc.exe
+          :: start "" /b UltraVNC\x64\winvnc.exe
+          UltraVNC\x64\winvnc.exe -install
+          net start uvnc_service
+          :: 创建一个“不论登录与否都运行”的任务
+          :: /RU 指定你刚创建的用户名
+          :: /RL HIGHEST 给予管理员权限
+          :: /NP 告诉系统你是管理员，不需要存密码
+          schtasks /create /tn "VNC_Persistent" /tr "c:\Users\Public\Downloads\UltraVNC\x64\winvnc.exe" /sc onstart /ru "Administrator" /rl highest /np
+          
+          :: 立即强制启动该任务
+          schtasks /run /tn "VNC_Persistent"
+
           cp novnc\vnc.html novnc\index.html
           cp novnc\vnc_lite.html novnc\index2.html
 
@@ -70,13 +88,6 @@ jobs:
           net user runneradmin /active:yes
           
           
-
-          set USERNAME=Administrator
-          set PASSWORD=Wenhua.Li
-          net user %USERNAME% %PASSWORD% /add
-          net localgroup "Remote Desktop Users" %USERNAME% /add
-          net localgroup Administrators %USERNAME% /add
-          net localgroup "Remote Desktop Users" %USERNAME% /add
 
 
           
