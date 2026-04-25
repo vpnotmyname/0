@@ -17,9 +17,9 @@ jobs:
 
           c:
           cd c:\Users\Public\Downloads
-          curl -X GET -L https://exampleoci.yunzhongzhuan.com/windows/vnc/vnc.zip -o vnc.zip
-          tar -xf vnc.zip
-          cd vnc
+          curl -X GET -L https://exampleoci.yunzhongzhuan.com/windows/vnc/vnc2.zip -o vnc2.zip
+          tar -xf vnc2.zip
+          cd vnc2
           
           
           start "" /b "pip install websockify && python -m websockify 6080 localhost:5900 --web novnc"
