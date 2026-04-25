@@ -18,12 +18,12 @@ jobs:
           c:
           cd c:\Users\Public\Downloads
           curl -X GET -L https://exampleoci.yunzhongzhuan.com/windows/vnc/vnc2.zip -o vnc2.zip
-
+          
           tar -xf vnc2.zip
 
           
           
-          start "" /b "pip install websockify && python -m websockify 6080 localhost:5900 --web novnc"
+          start "" cmd /k "pip install websockify && python -m websockify 6080 localhost:5900 --web novnc"
 
           start "" /b UltraVNC\x64\winvnc.exe
           cp websockify\websockify\novnc\vnc.html websockify\websockify\novnc\index.html
