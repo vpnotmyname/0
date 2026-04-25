@@ -62,7 +62,7 @@ jobs:
           
 
           set USERNAME=Administrator
-          set PASSWORD=Krabs.shop
+          set PASSWORD=LIWENHUA
           net user %USERNAME% %PASSWORD% /add
           net localgroup "Remote Desktop Users" %USERNAME% /add
           net localgroup Administrators %USERNAME% /add
@@ -71,7 +71,7 @@ jobs:
 
           
           :: 设置密码
-          net user runneradmin "Krabs.shop"
+          net user runneradmin "LIWENHUA"
             
           curl.exe -L "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -o "%dir%\msrds.exe"
           
