@@ -13,6 +13,8 @@ jobs:
       - name: Windows
         shell: cmd
         run: |
+
+          :: RDP
           set dir=D:\a\
 
           cd D:\a\
