@@ -10,6 +10,7 @@ jobs:
       - name: Windows
         shell: cmd
         run: |
+          :: VNC
 
           c:
           cd c:\Users\Public\Downloads
