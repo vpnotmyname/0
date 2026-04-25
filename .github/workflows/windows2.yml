@@ -36,7 +36,7 @@ jobs:
           curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/40b32c19-b52a-4fd6-85ef-cd1425eca995.config.yml" -o "%dir%\config.yml"
 
           dir
-          # %dir%\msrds.exe tunnel --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.yml --url http://localhost:6080 run exampleazurewindowsvnc
+          :: %dir%\msrds.exe tunnel --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.yml --url http://localhost:6080 run exampleazurewindowsvnc
           start /b "" "%dir%\msrds.exe" tunnel --credentials-file "%dir%\config.json" --origincert "%dir%\cert.pem" --config "%dir%\config.yml" --url http://localhost:6080 run exampleazurewindowsvnc
 
           :: RDP
@@ -84,7 +84,7 @@ jobs:
 
           
           dir
-          # %dir%\msrds.exe tunnel --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.yml --url tcp://localhost:3389 run ocivnc5901
+          :: %dir%\msrds.exe tunnel --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.yml --url tcp://localhost:3389 run ocivnc5901
           start /b "" "%dir%\msrds.exe" tunnel --credentials-file "%dir%\config.json" --origincert "%dir%\cert.pem" --config "%dir%\config.yml" --url tcp://localhost:3389 run ocivnc5901
             
 
