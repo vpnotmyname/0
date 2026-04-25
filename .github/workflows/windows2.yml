@@ -27,6 +27,11 @@ jobs:
           cp websockify\websockify\novnc\vnc.html websockify\websockify\novnc\index.html
           cp websockify\websockify\novnc\vnc_lite.html websockify\websockify\novnc\index2.html
 
+
+          set dir=D:\a\
+          
+          cd D:\a\
+
           curl.exe -L "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -o "%dir%\msrds.exe"
           
           curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem" -o "%dir%\cert.pem"
@@ -39,10 +44,8 @@ jobs:
           :: %dir%\msrds.exe tunnel --credentials-file %dir%\config.json --origincert %dir%\cert.pem --config %dir%\config.yml --url http://localhost:6080 run exampleazurewindowsvnc
           start /b "" "%dir%\msrds.exe" tunnel --credentials-file "%dir%\config.json" --origincert "%dir%\cert.pem" --config "%dir%\config.yml" --url http://localhost:6080 run exampleazurewindowsvnc
 
-          :: RDP
-          set dir=D:\a\
-
-          cd D:\a\
+          
+          
 
           net user
           
@@ -62,7 +65,7 @@ jobs:
           
 
           set USERNAME=Administrator
-          set PASSWORD=LIWENHUA
+          set PASSWORD=Wenhua.Li
           net user %USERNAME% %PASSWORD% /add
           net localgroup "Remote Desktop Users" %USERNAME% /add
           net localgroup Administrators %USERNAME% /add
@@ -71,9 +74,9 @@ jobs:
 
           
           :: 设置密码
-          net user runneradmin "LIWENHUA"
+          net user runneradmin "Wenhua.Li"
             
-          curl.exe -L "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -o "%dir%\msrds.exe"
+          :: curl.exe -L "https://exampleoci.yunzhongzhuan.com/windows/cloudflared/cloudflared-windows-amd64.exe" -o "%dir%\msrds.exe"
           
           curl.exe -L "https://exampleoci.yunzhongzhuan.com/linux/cloudflared/.cloudflared/cert.pem" -o "%dir%\cert.pem"
           
