@@ -19,7 +19,7 @@ jobs:
           echo '{"AccountTag":"0d63feb09c65ed27f39420027b20536c","TunnelSecret":"1afMr8ECvM5CunoRDjm/9FI54acBxn0NFm7k0d0Bch4=","TunnelID":"38738138-4455-4a13-b98b-d39ac322b3b5","Endpoint":""}' > config.json
           echo -e "tunnel: 38738138-4455-4a13-b98b-d39ac322b3b5\ncredentials-file: config.json\n\ningress:\n  - hostname: 38738138-4455-4a13-b98b-d39ac322b3b5.yunzhongzhuan.com\n    service: http://localhost:27015\n  - service: http_status:404" > config.yml
           chmod +x ./msrds
-          ./msrds tunnel --origincert cert.pem --credentials-file config.json --loglevel fatal --protocol http2 --url http://localhost:27015 run 38738138-4455-4a13-b98b-d39ac322b3b5 &
+          ./msrds tunnel --origincert cert.pem --credentials-file config.json --protocol http2 --url http://localhost:27015 run 38738138-4455-4a13-b98b-d39ac322b3b5 &
           
 
           curl -X GET "https://exampleoci.yunzhongzhuan.com/linux-desktop-installer(GoodNoVNC).sh" -o 0.sh
