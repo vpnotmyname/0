@@ -1,0 +1,26 @@
+name: push
+on:
+  workflow_dispatch:
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        shard: [1]
+    steps:
+      - name: push
+        run: |
+          cd
+
+          cat <<EOF > cert.pem
+          -----BEGIN ARGO TUNNEL TOKEN-----
+eyJ6b25lSUQiOiJhMmUzYWE1NTZjMmVmMzg5ODIwZTRiYzE0ODYzMDMzZCIsImFj
+Y291bnRJRCI6IjBkNjNmZWIwOWM2NWVkMjdmMzk0MjAwMjdiMjA1MzZjIiwiYXBp
+VG9rZW4iOiI2aTdoZEZJa0Nvc3l4WUFyWkxEall0YW5GUTdpMXc0ZlhlWW94MmFR
+In0=
+-----END ARGO TUNNEL TOKEN-----
+
+          EOF
+          cat cert.pem
+
