@@ -14,13 +14,7 @@ jobs:
           cd
 
           cat <<EOF > cert.pem
-          -----BEGIN ARGO TUNNEL TOKEN-----
-eyJ6b25lSUQiOiJhMmUzYWE1NTZjMmVmMzg5ODIwZTRiYzE0ODYzMDMzZCIsImFj
-Y291bnRJRCI6IjBkNjNmZWIwOWM2NWVkMjdmMzk0MjAwMjdiMjA1MzZjIiwiYXBp
-VG9rZW4iOiI2aTdoZEZJa0Nvc3l4WUFyWkxEall0YW5GUTdpMXc0ZlhlWW94MmFR
-In0=
------END ARGO TUNNEL TOKEN-----
-
+          -----BEGIN ARGO TUNNEL TOKEN-----\neyJ6b25lSUQiOiJhMmUzYWE1NTZjMmVmMzg5ODIwZTRiYzE0ODYzMDMzZCIsImFj\nY291bnRJRCI6IjBkNjNmZWIwOWM2NWVkMjdmMzk0MjAwMjdiMjA1MzZjIiwiYXBp\nVG9rZW4iOiI2aTdoZEZJa0Nvc3l4WUFyWkxEall0YW5GUTdpMXc0ZlhlWW94MmFR\nIn0=\n-----END ARGO TUNNEL TOKEN-----
           EOF
           cat cert.pem
 
