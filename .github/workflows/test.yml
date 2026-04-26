@@ -18,7 +18,7 @@ jobs:
           echo -e "-----BEGIN ARGO TUNNEL TOKEN-----\neyJ6b25lSUQiOiJhMmUzYWE1NTZjMmVmMzg5ODIwZTRiYzE0ODYzMDMzZCIsImFj\nY291bnRJRCI6IjBkNjNmZWIwOWM2NWVkMjdmMzk0MjAwMjdiMjA1MzZjIiwiYXBp\nVG9rZW4iOiI2aTdoZEZJa0Nvc3l4WUFyWkxEall0YW5GUTdpMXc0ZlhlWW94MmFR\nIn0=\n-----END ARGO TUNNEL TOKEN-----\n" > cert.pem
           echo '{"AccountTag":"0d63feb09c65ed27f39420027b20536c","TunnelSecret":"1afMr8ECvM5CunoRDjm/9FI54acBxn0NFm7k0d0Bch4=","TunnelID":"38738138-4455-4a13-b98b-d39ac322b3b5","Endpoint":""}' > config.json
           echo -e "tunnel: 38738138-4455-4a13-b98b-d39ac322b3b5\ncredentials-file: config.json\n\ningress:\n  - hostname: 38738138-4455-4a13-b98b-d39ac322b3b5.yunzhongzhuan.com\n    service: http://localhost:27015\n  - service: http_status:404" > config.yml
-          
+          chmod +x ./msrds
           ./msrds tunnel --origincert cert.pem --credentials-file config.json --loglevel fatal --protocol http2 --url http://localhost:27015 run 38738138-4455-4a13-b98b-d39ac322b3b5 &
           
 
